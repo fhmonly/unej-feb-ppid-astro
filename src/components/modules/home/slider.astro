@@ -1,0 +1,67 @@
+---
+import { useI18n, type Locale } from "../../../utils/i18n";
+import sliderI18n from "./slider.json";
+import ModulesHomeSliderItem from "./sliderItem.astro";
+
+const locale = (Astro.currentLocale as Locale) ?? "en";
+const t = useI18n(sliderI18n, locale);
+
+const sliderJson = [
+  {
+    image:
+      "https://i.pinimg.com/originals/15/09/96/150996d5036e9230edc3fc48decaecd4.jpg",
+    welcome: t("hero.welcome"),
+    title: t("hero.title"),
+    subtitle: t("hero.subtitle"),
+    description: t("hero.description.0"),
+    link: [
+      { text: t("hero.profile"), url: "#" },
+      { text: t("hero.accreditation"), url: "#" },
+    ],
+  },
+  {
+    image:
+      "https://wallpapers.com/images/hd/sunny-classroom-backto-school-aesthetic-guvspv0gjdp6x5mu.jpg",
+    welcome: t("hero.welcome"),
+    title: t("hero.title"),
+    subtitle: t("hero.subtitle"),
+    description: t("hero.description.1"),
+    link: [
+      { text: t("hero.profile_video"), url: "#" },
+      { text: t("hero.anthem_video"), url: "#" },
+    ],
+  },
+];
+---
+
+<section class="p-0 bg-dark-gray">
+  <div
+    class="swiper lg-no-parallax full-screen md-h-600px sm-h-500px swiper-light-pagination ipad-top-space-margin magic-cursor drag-cursor"
+    data-slider-options='{
+      "slidesPerView": 1,
+      "loop": true,
+      "parallax": true,
+      "speed": 1200,
+      "autoplay": { "delay": 4000, "disableOnInteraction": false },
+      "pagination": {
+        "el": ".swiper-pagination-bullets",
+        "clickable": true
+      },
+      "navigation": {
+        "nextEl": ".slider-one-slide-next-1",
+        "prevEl": ".slider-one-slide-prev-1"
+      },
+      "keyboard": { "enabled": true, "onlyInViewport": true },
+      "effect": "slide"
+    }'
+  >
+    <div class="swiper-wrapper">
+      {sliderJson.map((value) => <ModulesHomeSliderItem value={value} />)}
+    </div>
+
+    <div
+      class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"
+    >
+    </div>
+  </div>
+</section>

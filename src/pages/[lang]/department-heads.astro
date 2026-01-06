@@ -1,0 +1,170 @@
+---
+import ModulesDepartmentsHeadList from "@/components/modules/departmentHeads/list.astro";
+import WidgetsPageTitleTypography from "@/components/widgets/pageTitleTypography.astro";
+import Layout from "@layouts/main.astro";
+import {
+  generateMultiLocaleStaticPaths,
+  useI18n,
+  type Locale,
+} from "@utils/i18n";
+
+export async function getStaticPaths() {
+  return generateMultiLocaleStaticPaths();
+}
+const accountant = {
+  leader: {
+    image:
+      "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+    name: "Dr. Yosefa Sayekti, S.E., M.Com.",
+    department: "Ketua Jurusan",
+  },
+  secretary: {
+    image:
+      "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+    name: "Dr. Wahyu Agus Winarno, S.E., M.Sc., Ak.",
+    department: "Sekretaris Jurusan",
+  },
+  coordinators: [
+    {
+      image:
+        "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+      name: "Dr. Agung Budi Sulistiyo, SE, MSi, Ak,",
+      department: "Koordinator Program Studi<br>Sarjana Akuntansi",
+    },
+    {
+      image:
+        "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+      name: "Dr. Hendrawan Santosa Putra, S.E.,",
+      department: "Koordinator Program Studi<br>Magister Akuntansi",
+    },
+    {
+      image:
+        "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+      name: "Moch. Shulthoni, S.E, MSA., CSRS, CSRA",
+      department: "Koordinator Program Studi<br>Diploma Akuntansi",
+    },
+  ],
+};
+
+const economic = {
+  secretary: {
+    image:
+      "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+    name: "Dr. Duwi Yunitasari, S.E., M.E.",
+    department: "Sekretaris Jurusan",
+  },
+  coordinators: [
+    {
+      image:
+        "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+      name: "Dr. Hendrawan Santosa Putra, S.E.,",
+      department: "Koordinator Program Studi<br>Sarjana Ekonomi Syariah",
+    },
+    {
+      image:
+        "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+      name: "Dr. Sebastiana Viphindrartin, M.Kes",
+      department: "Koordinator Program Studi<br>Doktor Ilmu Ekonomi",
+    },
+    {
+      image:
+        "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+      name: "Dr. Herman Cahyo Diartho, S.E., M.P",
+      department: "Koordinator Program Studi<br>Sarjana Ekonomi Pembangunan",
+    },
+    {
+      image:
+        "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+      name: "Dr. Endah Kurnia Lestari, S.E., M.E.",
+      department: "Koordinator Program Studi<br>Magister Ilmu Ekonomi",
+    },
+  ],
+};
+
+const management = {
+  leader: {
+    image:
+      "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+    name: "Prof. Dr. Elok Sri Utami, M.Si.",
+    department: "Ketua Jurusan",
+  },
+  secretary: {
+    image:
+      "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+    name: "Dra. Lilik Farida, M.Si",
+    department: "Sekretaris Jurusan",
+  },
+  coordinators: [
+    {
+      image:
+        "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+      name: "Prof. Dr. Sumani, S.E., M.Si., CRA.",
+      department: "Koordinator Program Studi<br>Sarjana Manajemen",
+    },
+    {
+      image:
+        "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+      name: "Dr. Diana Sulianti K. Tobing, SE., M.Si., CRA., CMA.",
+      department: "Koordinator Program Studi<br>Doktor Ilmu Manajemen",
+    },
+    {
+      image:
+        "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+      name: "Drs. Marmono Singgih, M.Si., AFA., CRA.",
+      department: "Koordinator Program Studi<br>Diploma Kesekretariatan",
+    },
+    {
+      image:
+        "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+      name: "Dra. Dewi Prihatini, M.M., Ph.D.",
+      department: "Koordinator Program Studi<br>Diploma Administrasi Keuangan",
+    },
+    {
+      image:
+        "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+      name: "Ema Desia Prajitiasari, S.E., M.M.",
+      department: "Koordinator Program Studi<br>Diploma Manajemen Perusahaan",
+    },
+  ],
+};
+
+const departmentJson = {
+  en: {
+    title: "Department Heads",
+  },
+  id: {
+    title: "Pejabat Jurusan",
+  },
+};
+const t = useI18n(departmentJson, Astro.currentLocale as Locale);
+---
+
+<Layout title={t("title")}>
+  <WidgetsPageTitleTypography
+    image="https://i.pinimg.com/originals/e6/fc/70/e6fc7007970f0d1a190637bb630fc44e.jpg"
+    title={t("title")}
+  />
+
+  <ModulesDepartmentsHeadList
+    suptitle="Jurusan Akuntansi"
+    leader={accountant.leader}
+    secretary={accountant.secretary}
+    title={`Pejabat Jurusan Akuntansi Fakultas Ekonomi dan Bisnis`}
+    coordinators={accountant.coordinators}
+  />
+
+  <ModulesDepartmentsHeadList
+    suptitle="Jurusan Ekonomi Pembangunan"
+    title="Pejabat Ekonomi Pembangunan Fakultas Ekonomi dan Bisnis"
+    secretary={economic.secretary}
+    coordinators={economic.coordinators}
+  />
+  <ModulesDepartmentsHeadList
+    suptitle="Jurusan Manajemen"
+    title="Pejabat Jurusan Manajemen Fakultas Ekonomi dan Bisnis"
+    leader={management.leader}
+    secretary={management.secretary}
+    coordinators={management.coordinators}
+  />
+  <div class="py-3"></div>
+</Layout>

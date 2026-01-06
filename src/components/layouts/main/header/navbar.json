@@ -1,0 +1,62 @@
+{
+    "en": {
+        "navigation": {
+            "profile": {
+                "title": "Profile",
+                "overview": "Faculty Overview",
+                "leaders": "Leadership Profile",
+                "department_heads": "Heads of Departments & Study Program Coordinators",
+                "ppid": "PPID Profile",
+                "lecturers": "Lecturers Profile",
+                "professors": "Professors Profile"
+            },
+            "information": {
+                "title": "Information",
+                "list": "Information List",
+                "academic_teaser": "Academic – Study Program Teaser",
+                "academic_download": "Academic – Downloads",
+                "student_info": "Student Affairs – Information",
+                "student_download": "Student Affairs – Downloads"
+            },
+            "services": {
+                "title": "Services"
+            },
+            "publication": {
+                "title": "Publications",
+                "photo": "Photo Gallery",
+                "video": "Video Gallery"
+            },
+            "faq": "F.A.Q"
+        }
+    },
+    "id": {
+        "navigation": {
+            "profile": {
+                "title": "Profil",
+                "overview": "Selayang Pandang Fakultas",
+                "leaders": "Profil Pimpinan",
+                "department_heads": "Profil Ketua Jurusan & Koordinator Program Studi",
+                "ppid": "Profil PPID",
+                "lecturers": "Profil Dosen",
+                "professors": "Profil Profesor"
+            },
+            "information": {
+                "title": "Informasi",
+                "list": "Daftar Informasi",
+                "academic_teaser": "Akademik - Treaser Studi",
+                "academic_download": "Akademik - Unduhan",
+                "student_info": "Kemahasiswaan - Informasi",
+                "student_download": "Kemahasiswaan - Unduhan"
+            },
+            "services": {
+                "title": "Layanan"
+            },
+            "publication": {
+                "title": "Publikasi",
+                "photo": "Galeri Foto",
+                "video": "Galeri Video"
+            },
+            "faq": "F.A.Q"
+        }
+    }
+}

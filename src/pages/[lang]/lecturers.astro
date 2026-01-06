@@ -1,0 +1,124 @@
+---
+import { generateMultiLocaleStaticPaths, useI18n } from "@/utils/i18n";
+import WidgetsPageTitleTypografi from "@components/widgets/pageTitleTypography.astro";
+import Layout from "@layouts/main.astro";
+
+export async function getStaticPaths() {
+  return generateMultiLocaleStaticPaths();
+}
+const lecturers = Array.from({ length: 12 });
+
+const pageJson = {
+  en: {
+    title: "Lecturers",
+  },
+  id: {
+    title: "Dosen",
+  },
+};
+const t = useI18n(pageJson, Astro.currentLocale as any);
+---
+
+<Layout title={t("title")}>
+  <WidgetsPageTitleTypografi
+    image="https://i.pinimg.com/originals/e6/fc/70/e6fc7007970f0d1a190637bb630fc44e.jpg"
+    title={t("title")}
+  />
+
+  <section>
+    <div class="container">
+      <div class="row gap-2">
+        {
+          lecturers.map((_, idx) => (
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <img
+                        src="https://feb.unej.ac.id/assets/uploads/foto_1745989953.jpeg"
+                        class="img-thumbnail"
+                        width="100%"
+                      />
+                    </div>
+
+                    <div class="col-md-9">
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td>Nama</td>
+                            <td>&nbsp; : &nbsp;</td>
+                            <td>Prof. Dr. Mohammad Saleh, S.E., M.Sc.</td>
+                          </tr>
+                          <tr>
+                            <td>NIP</td>
+                            <td>&nbsp; : &nbsp;</td>
+                            <td>195608311984031002</td>
+                          </tr>
+                          <tr>
+                            <td>Email</td>
+                            <td>&nbsp; : &nbsp;</td>
+                            <td>fe.m.saleh@unej.ac.id</td>
+                          </tr>
+                          <tr>
+                            <td>Rank</td>
+                            <td>&nbsp; : &nbsp;</td>
+                            <td>Pembina Utama</td>
+                          </tr>
+                          <tr>
+                            <td>Class</td>
+                            <td>&nbsp; : &nbsp;</td>
+                            <td>IV/e</td>
+                          </tr>
+                          <tr>
+                            <td>Office</td>
+                            <td>&nbsp; : &nbsp;</td>
+                            <td>Guru Besar</td>
+                          </tr>
+                          <tr>
+                            <td>Concentration of science</td>
+                            <td>&nbsp; : &nbsp;</td>
+                            <td>Regional Economics and Agribusiness</td>
+                          </tr>
+                          <tr>
+                            <td class="text-nowrap">Research Interests</td>
+                            <td class="text-nowrap">&nbsp; : &nbsp;</td>
+                            <td class="text-nowrap">Economics</td>
+                          </tr>
+                          <tr>
+                            <td>ID Sinta</td>
+                            <td>&nbsp; : &nbsp;</td>
+                            <td>
+                              <a
+                                href="https://sinta.kemdikbud.go.id/authors/profile/5973717"
+                                target="_blank"
+                              >
+                                5973717
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>ID Scopus</td>
+                            <td>&nbsp; : &nbsp;</td>
+                            <td>
+                              <a
+                                href="https://www.scopus.com/authid/detail.uri?authorId=57210210363"
+                                target="_blank"
+                              >
+                                57210210363
+                              </a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

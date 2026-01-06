@@ -1,0 +1,226 @@
+---
+import {
+  languages,
+  switchLocalePath,
+  useI18n,
+  type Locale,
+} from "../../../../utils/i18n";
+import navbarMenuList from "./navbar.json";
+import LayoutsDefaultNavbarNestedItem from "./navbarNestedMenu.astro";
+import LayoutsDefaultNavbarTop from "./topbar.astro";
+
+const { currentLocale = "en" } = Astro;
+const { pathname, search, hash, href } = Astro.url;
+const fullPath = Astro.url.pathname + Astro.url.search;
+const t = useI18n(navbarMenuList as any, currentLocale as Locale);
+
+const menuList = [
+  {
+    label: "Home",
+    to: "/",
+  },
+  {
+    label: t("navigation.profile.title"),
+    icon: { fa: "fa-solid fa-user" },
+    children: [
+      {
+        label: t("navigation.profile.overview"),
+        to: "https://feb.unej.ac.id/id/tentang_profil",
+        target: "_blank",
+        icon: { fa: "fa-solid fa-building-columns" },
+      },
+      {
+        label: t("navigation.profile.leaders"),
+        to: "/leaders",
+        icon: { fa: "fa-solid fa-user-tie" },
+      },
+      {
+        label: t("navigation.profile.department_heads"),
+        to: "/department-heads",
+        icon: { fa: "fa-solid fa-users-gear" },
+      },
+      {
+        label: t("navigation.profile.ppid"),
+        to: "/ppid",
+        icon: { fa: "fa-solid fa-circle-info" },
+      },
+      {
+        label: t("navigation.profile.lecturers"),
+        to: "/lecturers",
+        icon: { fa: "fa-solid fa-chalkboard-user" },
+      },
+      {
+        label: t("navigation.profile.professors"),
+        to: "/professors",
+        icon: { fa: "fa-solid fa-user-graduate" },
+      },
+    ],
+  },
+
+  {
+    label: t("navigation.information.title"),
+    icon: { fa: "fa-solid fa-circle-info" },
+    children: [
+      {
+        label: t("navigation.information.list"),
+        to: "/info",
+        icon: { fa: "fa-solid fa-list" },
+      },
+      {
+        label: t("navigation.information.academic_teaser"),
+        to: "https://feb.unej.ac.id/id/mawa_treaser_form",
+        target: "_blank",
+        icon: { fa: "fa-solid fa-graduation-cap" },
+      },
+      {
+        label: t("navigation.information.academic_download"),
+        to: "https://feb.unej.ac.id/id/akademik_unduhan",
+        target: "_blank",
+        icon: { fa: "fa-solid fa-download" },
+      },
+      {
+        label: t("navigation.information.student_info"),
+        to: "https://feb.unej.ac.id/id/mawa_informasi",
+        target: "_blank",
+        icon: { fa: "fa-solid fa-users" },
+      },
+      {
+        label: t("navigation.information.student_download"),
+        to: "https://feb.unej.ac.id/id/mawa_unduhan",
+        target: "_blank",
+        icon: { fa: "fa-solid fa-file-arrow-down" },
+      },
+    ],
+  },
+
+  {
+    label: t("navigation.services.title"),
+    icon: { fa: "fa-solid fa-gears" },
+    children: [
+      {
+        label: "SIMFEB",
+        to: "https://feb.unej.ac.id",
+        icon: { fa: "fa-solid fa-desktop" },
+      },
+      {
+        label: "SISTER",
+        to: "https://sister.unej.ac.id",
+        icon: { fa: "fa-solid fa-network-wired" },
+      },
+    ],
+  },
+
+  {
+    label: t("navigation.publication.title"),
+    icon: { fa: "fa-solid fa-newspaper" },
+    children: [
+      {
+        label: t("navigation.publication.photo"),
+        to: "/photo_gallery",
+        icon: { fa: "fa-solid fa-image" },
+      },
+      {
+        label: t("navigation.publication.video"),
+        to: "/video_gallery",
+        icon: { fa: "fa-solid fa-video" },
+      },
+    ],
+  },
+
+  {
+    label: t("navigation.faq"),
+    to: "/faq",
+    icon: { fa: "fa-solid fa-circle-question" },
+  },
+];
+---
+
+<header class="header-with-topbar">
+  <LayoutsDefaultNavbarTop />
+
+  <nav
+    class="navbar navbar-expand-lg header-transparent bg-transparent header-reverse header-dark fixed-header"
+    data-header-hover="dark"
+  >
+    <div class="container-lg">
+      <div class="col-auto me-auto ps-lg-0">
+        <a class="navbar-brand" href="/">
+          <img src="/images/unej-removebg.png" alt="" class="default-logo" />
+          <img src="/images/unej-removebg.png" alt="" class="alt-logo" />
+          <img src="/images/unej-removebg.png" alt="" class="mobile-logo" />
+        </a>
+      </div>
+
+      <div class="col-auto menu-order position-static">
+        <button
+          class="navbar-toggler float-start"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-line"></span>
+          <span class="navbar-toggler-line"></span>
+          <span class="navbar-toggler-line"></span>
+          <span class="navbar-toggler-line"></span>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            {
+              menuList.map((menu) => (
+                <LayoutsDefaultNavbarNestedItem item={menu} />
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-auto pe-lg-0 ps-lg-0">
+        <div class="header-icon">
+          <div class="header-language-icon icon">
+            <div class="dropdown header-language">
+              <div
+                class="dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style="padding-left: 10px; color:white;"
+              >
+                <i class="feather icon-feather-globe"></i>
+              </div>
+              <ul class="dropdown-menu language-dropdown">
+                {
+                  languages.map((lang) => (
+                    <li>
+                      <a
+                        href={
+                          lang.code === currentLocale
+                            ? "javascript:void(0);"
+                            : switchLocalePath(fullPath, lang.code as any)
+                        }
+                        title={lang.name}
+                        class="text-truncate"
+                      >
+                        <span class="icon-country">
+                          <img
+                            src={`/images/country-flag-16X16/${lang.name}.png`}
+                            alt=""
+                          />
+                        </span>
+                        {lang.name}
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

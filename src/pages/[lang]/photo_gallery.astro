@@ -1,0 +1,91 @@
+---
+import { generateMultiLocaleStaticPaths, useI18n } from "@/utils/i18n";
+import WidgetsPageTitleTypografi from "@components/widgets/pageTitleTypography.astro";
+import WidgetsPopupImage from "@components/widgets/popupImage.astro";
+import Layout from "@layouts/main.astro";
+
+export async function getStaticPaths() {
+  return generateMultiLocaleStaticPaths();
+}
+const pageJson = {
+  en: {
+    title: "Photo Gallery",
+  },
+  id: {
+    title: "Galeri Foto",
+  },
+};
+const t = useI18n(pageJson, Astro.currentLocale as any);
+---
+
+<Layout title={t("title")}>
+  <WidgetsPageTitleTypografi
+    image="https://i.pinimg.com/originals/e6/fc/70/e6fc7007970f0d1a190637bb630fc44e.jpg"
+    title={t("title")}
+  />
+  <section class="overlap-height">
+    <div class="container overlap-gap-section">
+      <div
+        class="row justify-content-center align-items-center mb-6"
+        data-anime='{ "el": "childs", "translateY": [30, 1], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue":200, "easing": "easeOutQuad" }'
+      >
+        <div
+          class="col-auto pe-25px border-2 border-end border-color-dark-gray sm-border-end-0 sm-pe-15px"
+        >
+          <span
+            class="fs-16 text-uppercase text-gradient-san-blue-new-york-red fw-700 ls-1px"
+            >PPID FEB UNEJ</span
+          >
+        </div>
+        <div class="col-12 col-md-auto ps-25px sm-ps-15px text-center">
+          <h3 class="alt-font fw-400 text-dark-gray ls-minus-1px mb-0">
+            Photo Gallery
+          </h3>
+        </div>
+      </div>
+      <div
+        class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-md-3 transition-inner-all justify-content-center mb-4"
+        data-anime='{ "el": "childs", "translateY": [20, 0], "opacity": [0,1], "duration": 600, "delay": 300, "staggervalue": 300, "easing": "easeOutQuad" }'
+      >
+        <!-- start fancy text box item -->
+         {
+            new Array(8).fill(0).map(() => (
+            <div class="col mb-20px gallery-box">
+              <WidgetsPopupImage
+                image="https://images.rawpixel.com/image_social_square/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjg0NC1hZXctaW5zdGFncmFtcG9zdC03Ml8xLmpwZw.jpg"
+              >
+                <div class="services-box-style-01 hover-box">
+                  <div
+                    class="position-relative box-image border-radius-6px overflow-hidden"
+                  >
+                    <div>
+                      <img
+                        src="https://images.rawpixel.com/image_social_square/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjg0NC1hZXctaW5zdGFncmFtcG9zdC03Ml8xLmpwZw.jpg"
+                        alt=""
+                      />
+                      <div class="box-overlay bg-gradient-blue-ironstone-brown">
+                      </div>
+                      <span
+                        class="d-flex justify-content-center align-items-center mx-auto icon-box absolute-middle-center z-index-1 w-65px h-65px rounded-circle border border-color-transparent-white border-1"
+                        ><i
+                          class="bi bi-arrow-right-short text-white icon-very-medium d-flex"
+                        ></i></span
+                      >
+                    </div>
+                  </div>
+                  <div class="p-25px last-paragraph-no-margin text-center">
+                    <!-- <span class="fs-22 text-dark-gray alt-font"
+                      >Hair treatment</span
+                    > -->
+                    <p class="lh-26">Advanced hair treatment</p>
+                  </div>
+                </div>
+              </WidgetsPopupImage>
+            </div>
+            ))
+         }
+        <!-- end fancy text box item -->
+      </div>
+    </div>
+  </section>
+</Layout>

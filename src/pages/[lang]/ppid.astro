@@ -1,0 +1,121 @@
+---
+import PublicInfo from "@/components/modules/home/publicInfo.astro";
+import { generateMultiLocaleStaticPaths, useI18n } from "@/utils/i18n";
+import WidgetsPageTitleTypografi from "@components/widgets/pageTitleTypography.astro";
+import WidgetsStickySection from "@components/widgets/stickySection.astro";
+import Layout from "@layouts/main.astro";
+
+export async function getStaticPaths() {
+  return generateMultiLocaleStaticPaths();
+}
+const pageJson = {
+  en: {
+    title: "PPID Profile",
+  },
+  id: {
+    title: "Profil PPID",
+  },
+};
+const t = useI18n(pageJson, Astro.currentLocale as any);
+---
+
+<Layout title={t("title")}>
+  <WidgetsPageTitleTypografi
+    image="https://i.pinimg.com/originals/e6/fc/70/e6fc7007970f0d1a190637bb630fc44e.jpg"
+    title={t("title")}
+  />
+  <WidgetsStickySection title="Profile.">
+    <p
+      data-anime='{ "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'
+    >
+      Fakultas Fakultas Ekonomi dan Bisnis Universitas Jember, merupakan bagian
+      dari Universitas Jember yang mempunyai tugas penyelenggaraan Tri Dharma
+      Pendidikan Tinggi melalui pengajaran, penelitian dan pengabdian kepada
+      masyarakat. Sebagai bagian dari badan publik, Fakultas Fakultas Ekonomi
+      dan Bisnis Universitas Jember membuka akses kepada masyarakat untuk
+      mendapatkan informasi sesuai dengan aturan yang berlaku dalam
+      Undang-undang Keterbukaan Informasi Publik.
+    </p>
+  </WidgetsStickySection>
+  <WidgetsStickySection title="Personalia PPID Pelaksana" class="pt-0">
+    <div
+      data-anime='{ "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'
+    >
+      <p>
+        PPID Pelaksana Fakultas Fakultas Ekonomi dan Bisnis Universitas Jember
+        ditetapkan melalui
+      </p>
+      <p>
+        PPID Pelaksana Operasional : Dr. Regina Niken Wilantari, S.E., M.Si.
+      </p>
+      <p>PPID Petugas Pelayanan Informasi : Sandi Agus, S.Kom.</p>
+      <p>Operator : Erfandy Chandra Prasetya, S.Kom.</p>
+      <div>
+        <a
+          href="demo-marketing-services.html"
+          class="btn btn-large btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow me-30px sm-me-20px"
+        >
+          <span>
+            <span class="btn-text">SK PPID</span>
+            <span class="btn-icon"
+              ><i class="feather icon-feather-download"></i></span
+            >
+            <span class="btn-icon"
+              ><i class="feather icon-feather-download"></i></span
+            >
+          </span>
+        </a>
+        <a
+          href="demo-marketing-contact.html"
+          class="btn btn-link btn-hover-animation-switch btn-extra-large text-dark-gray fw-600 p-0"
+        >
+          <span>
+            <span class="btn-text">Informasi Publik</span>
+            <span class="btn-icon"
+              ><i class="feather icon-feather-download"></i></span
+            >
+            <span class="btn-icon"
+              ><i class="feather icon-feather-download"></i></span
+            >
+          </span>
+        </a>
+      </div>
+    </div>
+  </WidgetsStickySection>
+  <WidgetsStickySection title="Jadwal Layanan" class="pt-0">
+    <p>
+      Layanan dibuka pada hari kerja mulai pukul 08:00 - 15:00 di Website
+      Fakultas Ekonomi dan Bisnis Universitas Jember
+    </p>
+  </WidgetsStickySection>
+  <WidgetsStickySection title="Alamat PPID Pelaksana" class="pt-0">
+    <table>
+      <tbody>
+        <tr>
+          <td style="width: max-content" class="d-flex">
+            <span>Alamat&nbsp;&nbsp;</span>
+          </td>
+          <td>
+            <span
+              >: Sumbersari, Kec. Sumbersari, Kabupaten Jember, Jawa Timur</span
+            >
+          </td>
+        </tr>
+        <tr>
+          <td style="width: max-content" class="d-flex">
+            <span>Phone&nbsp;&nbsp;</span>
+          </td>
+          <td>: (0331) 337990 - 082337463327</td>
+        </tr>
+        <tr>
+          <td style="width: max-content" class="d-flex">
+            <span>Email&nbsp;&nbsp;</span>
+          </td>
+          <td>: feb@unej.ac.id</td>
+        </tr>
+      </tbody>
+    </table>
+  </WidgetsStickySection>
+  <div class="py-4"></div>
+  <PublicInfo />
+</Layout>

@@ -1,0 +1,35 @@
+---
+import CounterWithIcon from "../../widgets/counterWithIcon.astro";
+
+const counters = [
+  {
+    text: "Mahasiswa Aktif",
+    value: "4556",
+    icon: "fa-solid fa-users",
+  },
+  {
+    text: "Dosen Pengajar",
+    value: "124",
+    icon: "fa-solid fa-users",
+  },
+  {
+    text: "Tenaga Kependidikan",
+    value: "48",
+    icon: "fa-solid fa-users",
+  },
+];
+---
+
+<section class="bg-gradient-top-very-light-gray big-section">
+  <div class="container">
+    <div
+      class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 justify-content-center counter-style-01 row-gap-5"
+    >
+      {
+        counters.map(({ icon, text, value }) => (
+          <CounterWithIcon icon={icon} text={text} value={value} />
+        ))
+      }
+    </div>
+  </div>
+</section>

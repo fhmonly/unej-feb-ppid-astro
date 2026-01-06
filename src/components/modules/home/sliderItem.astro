@@ -1,0 +1,103 @@
+---
+export interface SliderLink {
+  text: string;
+  url: string;
+}
+
+export interface SliderValue {
+  image: string;
+  welcome: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  link: SliderLink[];
+}
+
+const { value } = Astro.props as { value: SliderValue };
+---
+
+<div class="swiper-slide overflow-hidden">
+  <div
+    class="cover-background position-absolute top-0 start-0 w-100 h-100"
+    style={`background-image: url('${value.image}');`}
+    data-swiper-parallax="1000"
+  >
+    <div
+      class="opacity-light bg-gradient-black-green"
+      style="background-color: black; opacity: 0.5"
+    >
+    </div>
+
+    <div class="container h-100" data-swiper-parallax="-300">
+      <div
+        class="row align-items-center justify-content-center h-100 text-center"
+      >
+        <div class="col-xl-7 col-lg-9 col-md-10 position-relative text-white">
+          <span
+            data-anime='{ "el": "childs", "translateY": [0,0], "opacity": [0,0.7], "duration": 1500, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'
+          >
+            <span class="fw-300 fs-22 opacity-7 mb-15px d-inline-block">
+              {value.welcome}
+            </span>
+          </span>
+
+          <span
+            class="opacity-7 fs-80 xs-fs-60 alt-font fw-700 text-shadow-extra-large ls-minus-2px mb-45px sm-mb-30px xs-mb-20px d-inline-block swiper-parallax-fancy-text"
+            data-fancy-text={JSON.stringify({
+              effect: "rotate",
+              string: [value.title],
+            })}></span>
+
+          <div>
+            <span
+              class="fw-300 fs-22 opacity-7 mb-15px d-inline-block"
+              data-anime='{ "el": "childs", "translateY": [0,0], "opacity": [0,0.7], "duration": 1500, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'
+            >
+              {value.subtitle}
+            </span>
+
+            <span
+              class="fw-300 fs-22 opacity-7 mb-15px d-inline-block"
+              data-anime='{ "el": "childs", "translateY": [0,0], "opacity": [0,0.7], "duration": 1500, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'
+            >
+              {value.description}
+            </span>
+          </div>
+
+          <span
+            data-anime='{ "el": "childs", "translateY": [80,0], "opacity": [0,1], "duration": 600, "delay": 500, "staggervalue": 300, "easing": "easeOutQuad" }'
+          >
+            <a
+              href={value.link[0]?.url}
+              target="_blank"
+              class="btn btn-large bg-primary btn-hover-animation-switch btn-round-edge btn-box-shadow me-20px xs-m-10px"
+            >
+              <span>
+                <span class="btn-text">{value.link[0]?.text}</span>
+                <span class="btn-icon"
+                  ><i class="feather icon-feather-arrow-right"></i></span
+                >
+                <span class="btn-icon"
+                  ><i class="feather icon-feather-arrow-right"></i></span
+                >
+              </span>
+            </a>
+
+            <a
+              href={value.link[1]?.url}
+              target="_blank"
+              class="btn btn-large btn-transparent-white-light border-1 btn-hover-animation btn-box-shadow btn-round-edge xs-m-10px"
+            >
+              <span>
+                <span class="btn-text">{value.link[1]?.text}</span>
+                <span class="btn-icon"
+                  ><i class="feather icon-feather-arrow-right"></i></span
+                >
+              </span>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

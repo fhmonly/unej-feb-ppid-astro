@@ -1,0 +1,130 @@
+---
+const services = [
+  {
+    text: "Permohonan Informasi Publik",
+    link: "https://form.apps.unej.ac.id/dashboard/#/nc/form/ce82c851-1095-428e-b282-0872962ddce8",
+  },
+  {
+    text: "Formulir Keluhan Pelayanan",
+    link: "https://form.apps.unej.ac.id/dashboard/#/nc/form/9e30e8db-8ad1-459a-bad2-38a03b0d54ae",
+  },
+  {
+    text: "Keberatan Atas Informasi Publik",
+    link: "https://form.apps.unej.ac.id/dashboard/#/nc/form/e3fdbed1-3556-4dac-982c-ed01d5b1eed0",
+  },
+  {
+    text: "Penyalahgunaan Wewenang",
+    link: "https://form.apps.unej.ac.id/dashboard/#/nc/form/2be325ab-21e5-44cc-a6b9-5b2b428ab194",
+  },
+];
+---
+
+<section>
+  <div class="container">
+    <div class="row align-items-center justify-content-center mb-7 sm-mb-40px">
+      <div
+        class="col-xl-5 col-lg-6 col-md-10 md-mb-50px"
+        data-anime='{ "el": "childs", "translateY": [15, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 100, "easing": "easeOutQuad" }'
+      >
+        <div class="mb-10px">
+          <span
+            class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"
+          ></span>
+          <span
+            class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle"
+          >
+            Layanan Publik
+          </span>
+        </div>
+
+        <h3
+          class="fw-600 text-dark-gray ls-minus-2px alt-font"
+          data-anime='{ "el": "lines", "translateY": [15, 0], "opacity": [0,1], "delay": 100, "staggervalue": 100, "easing": "easeOutQuad" }'
+        >
+          Fakultas Ekonomi dan Bisnis Universitas Jember
+        </h3>
+
+        <p>
+          Silahkan gunakan formulir di bawah ini untuk memperoleh informasi
+          publik maupun menyampaikan keluhan, keberatan, dan pengaduan Anda.
+        </p>
+
+        {
+          services.map((item) => (
+            <a
+              href={item.link}
+              class="icon-with-text-style-08 mb-10px link-primary"
+            >
+              <div class="feature-box feature-box-left-icon-middle overflow-hidden">
+                <div class="feature-box-icon feature-box-icon-rounded w-35px h-35px bg-linen rounded-circle me-10px">
+                  <i class="fa-solid fa-up-right-from-square fs-14" />
+                </div>
+                <div class="feature-box-content">
+                  <span>{item.text}</span>
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <div
+        class="col-lg-6 offset-xl-1 position-relative z-index-1"
+        data-anime='{ "opacity": [0,1], "duration": 600, "delay": 100, "staggervalue": 300, "easing": "easeOutQuad" }'
+      >
+        <div class="atropos" data-atropos data-atropos-perspective="2450">
+          <div class="atropos-scale">
+            <div class="atropos-rotate">
+              <div class="atropos-inner">
+                <img
+                  src="https://static.vecteezy.com/system/resources/previews/001/261/040/non_2x/female-call-center-agent-vector.jpg"
+                  alt=""
+                  class="border-radius-6px"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div
+        class="col-12 text-center"
+        data-anime='{ "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'
+      >
+        <i
+          class="bi bi-telephone-inbound text-dark-gray d-inline-block align-middle icon-extra-medium me-5px"
+        ></i>
+        <div class="fs-18 text-dark-gray d-inline-block align-middle fw-500">
+          Kami siap membantu Anda memperoleh informasi dan solusi dengan lebih
+          mudah.
+          <a
+            href="tel:6282337463327"
+            class="text-dark-gray text-decoration-line-bottom fw-600"
+          >
+            Hubungi kami
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="col-12 text-center mt-2"
+        data-anime='{ "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'
+      >
+        <i
+          class="bi bi-card-text text-dark-gray d-inline-block align-middle icon-extra-medium me-5px"
+        ></i>
+        <div class="fs-18 text-dark-gray d-inline-block align-middle fw-500">
+          Memiliki pertanyaan, saran, atau keluhan terkait layanan kami?
+          <a
+            href="https://lapor-feb.unej.my.id"
+            class="text-dark-gray text-decoration-line-bottom fw-600"
+          >
+            Sampaikan di sini
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

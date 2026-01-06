@@ -1,0 +1,78 @@
+---
+import { generateMultiLocaleStaticPaths, useI18n } from "@/utils/i18n";
+import ModulesLeadershipList from "@components/modules/leaders/list.astro";
+import WidgetsPageTitleTypografi from "@components/widgets/pageTitleTypography.astro";
+import Layout from "@layouts/main.astro";
+
+export async function getStaticPaths() {
+  return generateMultiLocaleStaticPaths();
+}
+
+const dekanatItems = [
+  {
+    image:
+      "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+    name: "Prof. Dr. Isti Fadah, M.Si., CRA., CMA.",
+    department: "Dekan",
+  },
+  {
+    image:
+      "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+    name: "Prof. Dr. Novi Puspitasari, S.E., M.M",
+    department: "Wakil Dekan I",
+  },
+  {
+    image:
+      "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+    name: "Dr. Nining Ika Wahyuni, S.E. M.Sc, Ak.",
+    department: "Wakil Dekan II",
+  },
+  {
+    image:
+      "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+    name: "Dr. Teguh Hadi Priyono, S.E., M.Si.",
+    department: "Wakil Dekan III",
+  },
+];
+
+const stafItems = [
+  {
+    image:
+      "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+    name: "Nurina Fitrianingtyas, SKM.",
+    department: "Wakil Koordinator Keuangan dan Kepegawaian",
+  },
+  {
+    image:
+      "https://next-level-study.com/wp-content/uploads/2024/10/Prof._Stella_Christie_Wakil_Menteri_Pendidikan_Tinggi_Sains_dan_Teknologi_2024_cropped.jpg",
+    name: "Sugianto, S.E., M.M.",
+    department: "Wakil Koordinator Akademik, Kemahasiswaan dan Alumni",
+  },
+];
+const leadershipJson = {
+  en: {
+    title: "Leadership",
+  },
+  id: {
+    title: "Kepemimpinan",
+  },
+};
+const t = useI18n(leadershipJson, Astro.currentLocale as any);
+---
+
+<Layout title={t("title")}>
+  <WidgetsPageTitleTypografi
+    image="https://i.pinimg.com/originals/e6/fc/70/e6fc7007970f0d1a190637bb630fc44e.jpg"
+    title={t("title")}
+  />
+  <ModulesLeadershipList
+    title="Pejabat Dekanat Fakultas Ekonomi dan Bisnis"
+    suptitle="Dekanat"
+    items={dekanatItems}
+  />
+  <ModulesLeadershipList
+    title="Pejabat Tenaga Kependidikan Fakultas Ekonomi dan Bisnis"
+    suptitle="Staf Tenaga Kependidikan"
+    items={stafItems}
+  />
+</Layout>

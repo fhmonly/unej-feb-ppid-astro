@@ -1,0 +1,15 @@
+---
+export async function getStaticPaths() {
+  return [
+    { params: { page: "department-heads" } },
+    { params: { page: "faq" } },
+    { params: { page: "info" } },
+    { params: { page: "leaders" } },
+    { params: { page: "lecturers" } },
+    { params: { page: "photo_gallery" } },
+    { params: { page: "ppid" } },
+    { params: { page: "professors" } },
+    { params: { page: "video_gallery" } },
+  ];
+}
+---

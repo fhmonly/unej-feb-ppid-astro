@@ -1,0 +1,85 @@
+---
+import { getLocaleLink } from "../../../../utils/i18n";
+import NavbarNestedItem from "./navbarNestedMenu.astro";
+export type MenuItem = {
+  label: string;
+  to?: string;
+  icon?: {
+    fa?: string;
+    bi?: string;
+  };
+  target?: string;
+  children?: MenuItem[];
+};
+
+export type Props = {
+  item: MenuItem;
+  level?: number;
+};
+
+const { item, level = 0 } = Astro.props as Props;
+
+const dropdownClass = level === 0 ? "simple-dropdown" : "dropdown"; 
+---
+
+<li
+  class={`nav-item ${
+    item.children ? `dropdown ${dropdownClass}` : ""
+  }`}
+>
+  {item.children ? (
+    <>
+      <!-- Parent -->
+      <a href="javascript:void(0);" class="nav-link text-truncate">
+        {level > 0 && (
+          <>
+            {item.icon?.fa ? (
+              <i
+                class={item.icon.fa}
+                style={`color: ${level === 0 ? "inherit" : "white"}; width:16px; margin-right:10px; display:inline-flex; align-items:center; justify-content:center;`}
+              />
+            ) : item.icon?.bi ? (
+              <i
+                class={`bi ${item.icon.bi}`}
+                style={`color: ${level === 0 ? "inherit" : "white"}; width:16px; margin-right:10px; display:inline-flex; align-items:center; justify-content:center;`}
+              />
+            ) : null}
+          </>
+        )}
+
+        <span style={`color:${level === 0 ? "inherit" : "white"}`}>
+          {item.label}
+        </span>
+      </a>
+
+      <!-- Children -->
+      <ul class="dropdown-menu">
+        {item.children.map((child) => (
+          <NavbarNestedItem item={child} level={level + 1} />
+        ))}
+      </ul>
+    </>
+  ) : (
+    <!-- Leaf -->
+    <a
+      href={getLocaleLink(Astro.currentLocale as any,item.to??'#')}
+      target={item.target}
+      class="nav-link text-truncate"
+      style="display:flex"
+    >
+      {item.icon?.fa ? (
+        <i
+          class={item.icon.fa}
+          style="color:white; width:16px; margin-right:10px; display:inline-flex; align-items:center; justify-content:center;"
+        />
+      ) : item.icon?.bi ? (
+        <i
+          class={`bi ${item.icon.bi}`}
+          style="color:white; width:16px; margin-right:10px; display:inline-flex; align-items:center; justify-content:center;"
+        />
+      ) : null}
+
+      <span style="color:white">{item.label}</span>
+    </a>
+  )}
+</li>

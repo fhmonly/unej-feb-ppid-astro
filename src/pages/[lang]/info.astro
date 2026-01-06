@@ -1,0 +1,40 @@
+---
+import { generateMultiLocaleStaticPaths, useI18n } from "@/utils/i18n";
+import WidgetsCenteredSectionTitle from "@components/widgets/centeredSectionTitle.astro";
+import WidgetsPageTitleTypografi from "@components/widgets/pageTitleTypography.astro";
+import Layout from "@layouts/main.astro";
+
+export async function getStaticPaths() {
+  return generateMultiLocaleStaticPaths();
+}
+const infoJson = {
+  en: {
+    title: "Information",
+  },
+  id: {
+    title: "Informasi",
+  },
+};
+const t = useI18n(infoJson, Astro.currentLocale as any);
+---
+
+<Layout title={t("title")}>
+  <WidgetsPageTitleTypografi
+    image="https://i.pinimg.com/originals/e6/fc/70/e6fc7007970f0d1a190637bb630fc44e.jpg"
+    title={t("title")}
+  />
+  <section>
+    <div class="container">
+      <WidgetsCenteredSectionTitle
+        title="Daftar Informasi PPID FEB UNEJ"
+        suptitle="Info"
+      />
+      <div>
+        <img
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMtOUhQbgoGGIWi9_AkpOB0TeSd4aXoEVv3aCgh3VBgroAViS0bu2CMB74TI535Lrd6fGXk6NdmyyDGL8svXRm0Pi7SRw5UXEtelpTGj57OwO00FUmNME9nmzzYCLPeBWHkzwZa7V2UvKpX0lbgptpcDDTQWyYY-9SlNRTA4bHT5G77BoFQby3ng0mmn4/s1350/Infografis%20Satelit%20SATRIA-1.jpg"
+          alt=""
+        />
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,111 @@
+---
+import { generateMultiLocaleStaticPaths, useI18n } from "@/utils/i18n";
+import WidgetsAccordionContentContainer from "@components/widgets/accordion/content/container.astro";
+import WidgetsAccordionContentItem from "@components/widgets/accordion/content/item.astro";
+import WidgetsAccordionContentPane from "@components/widgets/accordion/content/pane.astro";
+import WidgetsCenteredSectionTitle from "@components/widgets/centeredSectionTitle.astro";
+import WidgetsPageTitleTypografi from "@components/widgets/pageTitleTypography.astro";
+import Layout from "@layouts/main.astro";
+
+export async function getStaticPaths() {
+  return generateMultiLocaleStaticPaths();
+}
+
+const faqJson = {
+  en: {
+    title: "F.A.Q",
+  },
+  id: {
+    title: "F.A.Q",
+  },
+};
+const t = useI18n(faqJson, Astro.currentLocale as any);
+---
+
+<Layout title={t("title")}>
+  <WidgetsPageTitleTypografi
+    image="https://i.pinimg.com/originals/e6/fc/70/e6fc7007970f0d1a190637bb630fc44e.jpg"
+    title="F.A.Q"
+  />
+  <section>
+    <div class="container">
+      <WidgetsCenteredSectionTitle
+        title="Frequently Ask Question"
+        suptitle="F.A.Q"
+      />
+
+      <div class="row">
+        <WidgetsAccordionContentContainer>
+          <WidgetsAccordionContentPane
+            active={true}
+            tabId="accordion-1"
+            paneId="acc-01"
+          >
+            <WidgetsAccordionContentItem
+              idx={1}
+              paneId="acc-01"
+              title="Apa yang dimaksud dengan PPID?"
+              desc="PPID adalah singkatan dari Pejabat Pengelola Informasi dan Dokumentasi dalam bahasa Indonesia. PPID adalah sebuah unit atau lembaga yang bertanggung jawab untuk mengelola informasi dan dokumen publik di suatu instansi pemerintah atau lembaga publik. PPID bertujuan untuk memfasilitasi akses masyarakat kepada informasi yang dihasilkan, disimpan, dan dikelola oleh lembaga tersebut."
+            />
+
+            <WidgetsAccordionContentItem
+              idx={2}
+              paneId="acc-01"
+              title="Apa fungsi utama PPID?"
+            >
+              <ul class="p-0 m-0 list-style-03 text-secondary fw-500">
+                <li>Memastikan transparansi pemerintahan.</li>
+                <li>Melayani permintaan informasi publik.</li>
+                <li>Mengelola dan merawat dokumen publik.</li>
+                <li>Memastikan kepatuhan terhadap UU KIP.</li>
+              </ul>
+            </WidgetsAccordionContentItem>
+
+            <WidgetsAccordionContentItem
+              idx={3}
+              paneId="acc-01"
+              title="Apakah ada dasar hukum yang digunakan PPID?"
+            >
+              <p>
+                Dasar hukum PPID adalah UU No. 14 Tahun 2008 tentang Keterbukaan
+                Informasi Publik.
+              </p>
+              <ul class="p-0 m-0 list-style-03 text-secondary fw-500">
+                <li>PP No. 61 Tahun 2010</li>
+                <li>Peraturan Kepala Badan Publik</li>
+                <li>Keputusan Menteri/Pimpinan Lembaga</li>
+              </ul>
+            </WidgetsAccordionContentItem>
+
+            <WidgetsAccordionContentItem
+              idx={4}
+              paneId="acc-01"
+              title="Daftar informasi publik apa saja yang dapat FEB UNEJ sampaikan?"
+            >
+              <p>Beberapa informasi publik yang dapat disampaikan:</p>
+
+              <strong>Informasi Akademik</strong>
+              <ul class="p-0 m-0 list-style-03 text-secondary fw-500">
+                <li>Program studi</li>
+                <li>Kurikulum</li>
+                <li>Penerimaan mahasiswa</li>
+              </ul>
+
+              <strong>Informasi Penelitian</strong>
+              <ul class="p-0 m-0 list-style-03 text-secondary fw-500">
+                <li>Hasil penelitian</li>
+                <li>Proyek berjalan</li>
+              </ul>
+
+              <strong>Informasi Administrasi</strong>
+              <ul class="p-0 m-0 list-style-03 text-secondary fw-500">
+                <li>Struktur organisasi</li>
+                <li>Laporan keuangan</li>
+              </ul>
+            </WidgetsAccordionContentItem>
+          </WidgetsAccordionContentPane>
+        </WidgetsAccordionContentContainer>
+      </div>
+    </div>
+  </section>
+</Layout>

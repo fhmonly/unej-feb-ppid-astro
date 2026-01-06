@@ -1,0 +1,32 @@
+{
+    "en": {
+        "hero": {
+            "welcome": "Welcome to PPID FEB UNEJ",
+            "title": "PPID Executor",
+            "subtitle": "Information and Documentation Sharing",
+            "description": [
+                "Realizing public information services that are accountable, efficient, and effective.",
+                "Faculty of Economics and Business, University of Jember"
+            ],
+            "profile": "Our Profile",
+            "accreditation": "Accreditation",
+            "profile_video": "Profile Video",
+            "anthem_video": "FEB UNEJ Anthem Video"
+        }
+    },
+    "id": {
+        "hero": {
+            "welcome": "Selamat Datang di PPID FEB UNEJ",
+            "title": "PPID Pelaksana",
+            "subtitle": "Sharing Informasi dan Dokumentasi",
+            "description": [
+                "Mewujudkan pelayanan informasi publik yang akuntabel, efisien, dan efektif",
+                "Fakultas Ekonomi dan Bisnis Universitas Jember"
+            ],
+            "profile": "Profil Kami",
+            "accreditation": "Akreditasi",
+            "profile_video": "Video Profil",
+            "anthem_video": "Video Mars FEB UNEJ"
+        }
+    }
+}
